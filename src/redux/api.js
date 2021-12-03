@@ -2,6 +2,7 @@ import axios from 'axios';
 import { getPlaces, getPlacesSuccess, getPlacesFailure } from './actions/placesDataAction';
 import { getWeather, getWeatherSuccess, getWeatherFailure } from './actions/weatherDataAction';
 
+const API_KEY = process.env.REACT_APP_API_KEY;
 // Asynchronous thunk action
 export const fetchPlaces = (type, sw, ne) => {
   return async (dispatch) => {
@@ -18,7 +19,7 @@ export const fetchPlaces = (type, sw, ne) => {
         },
         headers: {
           'x-rapidapi-host': 'travel-advisor.p.rapidapi.com',
-          'x-rapidapi-key': 'e036bc8cb6msh4a25ec88814030ap1a4671jsnd8e1cce66170'
+          'x-rapidapi-key': API_KEY
         }
       }).then((response) => {
         console.log("data========", response.data.data);
@@ -40,7 +41,7 @@ export const fetchWeatherData = (lng, lat) => {
         params: {lon: lng, lat: lat},
         headers: {
           'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com',
-          'x-rapidapi-key': 'e036bc8cb6msh4a25ec88814030ap1a4671jsnd8e1cce66170'
+          'x-rapidapi-key': API_KEY
         }
       }).then((response) => {
         console.log("data========", response.data.list);
